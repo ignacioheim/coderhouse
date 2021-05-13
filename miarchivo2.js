@@ -6,7 +6,7 @@ class Trip {
         this.numbersPassengers = numbersPassengers;
         this.discount = discount;
     }
-    discountRate(passengers) {
+    discountRate() {
         if (passengers == 1) {
             this.discount = 1;
         }
@@ -20,7 +20,7 @@ class Trip {
             this.discount = 0.85
         }
     }
-    priceAir(city) {
+    priceAir() {
         switch (this.city) {
             case "Tokio":
               return Intl.NumberFormat().format((this.numbersPassengers * 32000) * this.discount);
@@ -65,19 +65,13 @@ let discount = 1
 
 // NUEVA INSTANCIA DE VIAJE
 
-const tripChosen = new Trip(cityChosen, passengers, discount);
-tripChosen.discountRate(passengers);
+const tripChosen = [];
 
-alert("La ciudad elegida fue " + tripChosen["city"]);
-alert("Numero de pasajeros: " + tripChosen["numbersPassengers"]);
-alert("El precio total para de el viaje es " + tripChosen.priceAir(cityChosen));
+tripChosen.push(new Trip(cityChosen, passengers, discount));
 
-
-document.getElementById("title").innerHTML = "Resumen";
-document.getElementById("city").innerHTML = ("La ciudad elegida fue " + tripChosen["city"]);
-document.getElementById("numberPassengers").innerHTML = ("Numero de pasajeros: " + 
-tripChosen["numbersPassengers"]);
-document.getElementById("priceAir").innerHTML = ("El precio total para de el viaje es " + 
-tripChosen.priceAir(cityChosen));
+tripChosen[0].discountRate();
 
 
+alert("La ciudad elegida fue " + tripChosen[0].city);
+alert("Numero de pasajeros: " + tripChosen[0].numbersPassengers);
+alert("El precio total para de el viaje es " + tripChosen[0].priceAir());
